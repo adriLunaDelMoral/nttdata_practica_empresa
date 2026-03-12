@@ -1,7 +1,6 @@
 package com.nttdata_empresa.models;
 
 import java.util.Date;
-import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -38,11 +36,15 @@ public class Tareas
     @Column
     private Date fechaFin;
     
+    @Column
+    private String estado;
+    
     @ManyToOne
     @JoinColumn(name = "idProyecto")
     private Proyectos proyecto;
    
-    @OneToMany(mappedBy = "tarea")
-    private List<EmpleadosTareas> empleadoTareas;
+    @ManyToOne
+    @JoinColumn(name = "idEmpleado")
+    private Empleado empleado;
     
 }

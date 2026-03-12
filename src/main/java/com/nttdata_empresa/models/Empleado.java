@@ -44,7 +44,7 @@ public class Empleado
     private Departamento departamento;
 
     @OneToMany(mappedBy = "empleado")
-    private List<EmpleadosTareas> empleadoTareas;
+    private List<Tareas> tareas;
     
     @OneToOne(mappedBy = "responsable")
     private Departamento departamentoResponsable;
