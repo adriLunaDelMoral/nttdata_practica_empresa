@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,10 +29,12 @@ public class Departamento
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDepartamento;
     
-    @Column
+	@NotBlank(message = "El nombreDepartamento no puede estar vacio")
+    @Column(nullable = false)
     private String nombreDepartamento;
-    
-    @Column
+
+    @NotBlank(message = "La ubicacion no puede estar vacia")
+    @Column(nullable = false)
     private String ubicacion;
 
     @OneToOne

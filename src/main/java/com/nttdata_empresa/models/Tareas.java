@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,16 +28,20 @@ public class Tareas
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTarea;
     
-	@Column
+	@NotBlank(message = "El nombreTarea no puede estar vacio")
+    @Column(nullable = false)
 	private String nombreTarea;
 
-    @Column
+	@NotBlank(message = "La fechaInicio no puede estar vacia")
+    @Column(nullable = false)
     private Date fechaInicio;
-    
-    @Column
+	
+	@NotBlank(message = "La fechaFin no puede estar vacia")
+    @Column(nullable = false)
     private Date fechaFin;
     
-    @Column
+	@NotBlank(message = "El estado no puede estar vacio")
+    @Column(nullable = false)
     private String estado;
     
     @ManyToOne

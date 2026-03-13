@@ -12,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,16 +31,20 @@ public class Proyectos
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProyecto;
     
-    @Column
+	@NotBlank(message = "El nombreProyecto no puede estar vacio")
+    @Column(nullable = false)
     private String nombreProyecto;
-    
-    @Column
+	
+	@NotBlank(message = "El estado no puede estar vacio")
+    @Column(nullable = false)
     private String estado;
     
-    @Column
+	@NotBlank(message = "La fechaInicio no puede estar vacia")
+    @Column(nullable = false)
     private Date fechaInicio;
 
-    @Column
+	@NotBlank(message = "La fechaEstimada no puede estar vacia")
+    @Column(nullable = false)
     private Date fechaEstimada;
     
     @ManyToOne

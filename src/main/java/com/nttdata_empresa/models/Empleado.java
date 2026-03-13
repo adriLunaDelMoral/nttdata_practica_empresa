@@ -12,6 +12,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,10 +31,12 @@ public class Empleado
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEmpleado;
     
-    @Column
+    @NotBlank(message = "El nombre no puede estar vacio")
+    @Column(nullable = false)
     private String nombre;
     
-    @Column
+    @NotBlank(message = "El salario no puede estar vacio")
+    @Column(nullable = false)
     private Double salario;
     
     @Column
